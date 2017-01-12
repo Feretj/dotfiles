@@ -1,0 +1,7 @@
+[user]
+	email = g.sergey.wolf@gmail.com
+	name = feretj
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	required = true
