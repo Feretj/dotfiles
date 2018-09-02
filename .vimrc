@@ -138,9 +138,9 @@ let g:airline_detect_paste=1
 let g:airline_theme='solarized'
 syntax enable
 set background=dark
-colorscheme solarized
 set number
 :filetype plugin on
 set updatetime=250
 let g:gitgutter_sign_column_always = 1
 let g:ycm_python_binary_path = '/usr/bin/python'
+let g:ycm_global_ycm_extra_conf = '/usr/share/vim/vimfiles/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py'
