@@ -54,7 +54,7 @@ plugins=(git git-flow virtualenv pip colored-man-pages colorize command-not-foun
 
 # User configuration
 export NVM_LAZY_LOAD=true
-export PATH="/usr/local/sbin:/usr/local/bin:/usr/bin:/usr/bin/site_perl:/usr/bin/vendor_perl:/usr/bin/core_perl:/home/feretj/.yarn/bin"
+export PATH="/usr/local/sbin:/usr/local/bin:/usr/bin:/usr/bin/site_perl:/usr/bin/vendor_perl:/usr/bin/core_perl:/home/feretj/.local/bin:/home/feretj/.yarn/bin"
 # export MANPATH="/usr/local/man:$MANPATH"
 
 source $ZSH/oh-my-zsh.sh
