@@ -3,6 +3,10 @@ zmodload zdharma/zplugin
 
 DEFAULT_USER="feretj"
 
+ZSH_CACHE_DIR="/Users/feretj/.cache/zsh"
+
+eval `gdircolors .dircolors`
+
 # Preferred editor for local and remote sessions
 if [[ -n $SSH_CONNECTION ]]; then
   export EDITOR='vim'
@@ -43,6 +47,7 @@ zplugin snippet OMZ::plugins/git-flow/git-flow.plugin.zsh
 zplugin snippet OMZ::plugins/colored-man-pages/colored-man-pages.plugin.zsh
 zplugin snippet OMZ::plugins/extract/extract.plugin.zsh
 zplugin snippet OMZ::plugins/sudo/sudo.plugin.zsh
+zplugin ice as"completion"
 zplugin light zsh-users/zsh-completions
 zplugin light djui/alias-tips
 zplugin light chrissicool/zsh-256color
@@ -52,4 +57,46 @@ compinit
 
 zplugin light bhilburn/powerlevel9k
 zplugin ice silent wait'0'
+zplugin light zdharma/history-search-multi-word
+zplugin ice silent wait'0'
 zplugin light zdharma/fast-syntax-highlighting
+
+# Use same colors as ls
+zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
+
+# Group results by category
+zstyle ':completion:*' group-name ''
+
+# Keep directories and files separated
+zstyle ':completion:*' list-dirs-first true
+
+# Always use menu selection for `cd -`
+zstyle ':completion:*:*:cd:*:directory-stack' force-list always
+zstyle ':completion:*:*:cd:*:directory-stack' menu yes select
+
+# Pretty messages during pagination
+zstyle ':completion:*' list-prompt '%SAt %p: Hit TAB for more, or the character to insert%s'
+zstyle ':completion:*' select-prompt '%SScrolling active: current selection at %p%s'
+
+# Nicer format for completion messages
+zstyle ':completion:*' format '%B--- %d ---%b'
+zstyle ':completion:*:descriptions' format '%U%B%d%b%u'
+zstyle ':completion:*:corrections' format '%U%F{green}%d (errors: %e)%f%u'
+zstyle ':completion:*:warnings' format '%F{202}%BSorry, no matches for: %F{214}%d%b'
+
+zstyle ':completion:*' verbose yes
+
+# complete manual by their section
+zstyle ':completion:*:manuals'    separate-sections true
+zstyle ':completion:*:manuals.*'  insert-sections   true
+zstyle ':completion:*:man:*'      menu yes select
+
+# Search path for sudo completion
+zstyle ':completion:*:sudo:*' command-path /usr/local/sbin \
+                                            /usr/local/bin  \
+                                            /usr/sbin       \
+                                            /usr/bin        \
+                                            /sbin           \
+                                            /bin            \
+                                            /usr/X11R6/bin
+
