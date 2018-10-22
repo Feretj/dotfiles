@@ -48,11 +48,7 @@ zplugin light djui/alias-tips
 zplugin light chrissicool/zsh-256color
 
 autoload -Uz compinit 
-if [ $(date +'%j') != $(stat -f '%Sm' -t '%j' ${ZPLGM[ZCOMPDUMP_PATH]:-${ZDOTDIR:-$HOME}/.zcompdump}) ]; then
-  compinit
-else
-  compinit -C
-fi
+compinit
 
 zplugin light bhilburn/powerlevel9k
 zplugin ice silent wait'0'
