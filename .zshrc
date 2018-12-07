@@ -47,6 +47,7 @@ zplugin snippet OMZ::plugins/git-flow/git-flow.plugin.zsh
 zplugin snippet OMZ::plugins/colored-man-pages/colored-man-pages.plugin.zsh
 zplugin snippet OMZ::plugins/extract/extract.plugin.zsh
 zplugin snippet OMZ::plugins/sudo/sudo.plugin.zsh
+zplugin snippet OMZ::plugins/aws/aws.plugin.zsh
 zplugin ice as"completion"
 zplugin light zsh-users/zsh-completions
 zplugin light djui/alias-tips
