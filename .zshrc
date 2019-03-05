@@ -1,11 +1,9 @@
-module_path+=( "/Users/feretj/.zplugin/bin/zmodules/Src" )
+module_path+=( "/home/feretj/.zplugin/bin/zmodules/Src" )
 zmodload zdharma/zplugin
 
 DEFAULT_USER="feretj"
 
-ZSH_CACHE_DIR="/Users/feretj/.cache/zsh"
-
-eval `gdircolors .dircolors`
+ZSH_CACHE_DIR="/home/feretj/.cache/zsh"
 
 # Preferred editor for local and remote sessions
 if [[ -n $SSH_CONNECTION ]]; then
@@ -35,7 +33,7 @@ TIMEFMT='%J   %U  user %S system %P cpu %*E total'$'\n'\
 'other page faults:         %R'
 
 ### Added by Zplugin's installer
-source '/Users/feretj/.zplugin/bin/zplugin.zsh'
+source '/home/feretj/.zplugin/bin/zplugin.zsh'
 autoload -Uz _zplugin
 (( ${+_comps} )) && _comps[zplugin]=_zplugin
 ### End of Zplugin's installer chunk
