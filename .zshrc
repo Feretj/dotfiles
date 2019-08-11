@@ -1,11 +1,9 @@
-module_path+=( "/Users/feretj/.zplugin/bin/zmodules/Src" )
+module_path+=( "/home/feretj/.zplugin/bin/zmodules/Src" )
 zmodload zdharma/zplugin
 
 DEFAULT_USER="feretj"
 
-ZSH_CACHE_DIR="/Users/feretj/.cache/zsh"
-
-eval `gdircolors .dircolors`
+ZSH_CACHE_DIR="/home/feretj/.cache/zsh"
 
 # Preferred editor for local and remote sessions
 if [[ -n $SSH_CONNECTION ]]; then
@@ -34,8 +32,10 @@ TIMEFMT='%J   %U  user %S system %P cpu %*E total'$'\n'\
 'page faults from disk:     %F'$'\n'\
 'other page faults:         %R'
 
+export NVM_LAZY_LOAD=true
+
 ### Added by Zplugin's installer
-source '/Users/feretj/.zplugin/bin/zplugin.zsh'
+source '/home/feretj/.zplugin/bin/zplugin.zsh'
 autoload -Uz _zplugin
 (( ${+_comps} )) && _comps[zplugin]=_zplugin
 ### End of Zplugin's installer chunk
@@ -52,6 +52,7 @@ zplugin ice as"completion"
 zplugin light zsh-users/zsh-completions
 zplugin light djui/alias-tips
 zplugin light chrissicool/zsh-256color
+zplugin light lukechilds/zsh-nvm
 
 autoload -Uz compinit 
 compinit
@@ -101,3 +102,12 @@ zstyle ':completion:*:sudo:*' command-path /usr/local/sbin \
                                             /bin            \
                                             /usr/X11R6/bin
 
+
+export GPG_TTY=$(tty)
+gpg-connect-agent updatestartuptty /bye >/dev/null
+
+export ANDROID_HOME=$HOME/Android/Sdk
+export PATH=$PATH:$ANDROID_HOME/emulator
+export PATH=$PATH:$ANDROID_HOME/tools
+export PATH=$PATH:$ANDROID_HOME/tools/bin
+export PATH=$PATH:$ANDROID_HOME/platform-tools
