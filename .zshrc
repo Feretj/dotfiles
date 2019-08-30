@@ -1,9 +1,9 @@
-module_path+=( "/home/feretj/.zplugin/bin/zmodules/Src" )
+module_path+=( "/Users/sgorbachev/.zplugin/bin/zmodules/Src" )
 zmodload zdharma/zplugin
 
-DEFAULT_USER="feretj"
+DEFAULT_USER="sgorbachev"
 
-ZSH_CACHE_DIR="/home/feretj/.cache/zsh"
+ZSH_CACHE_DIR="/Users/sgorbachev/.cache/zsh"
 
 # Preferred editor for local and remote sessions
 if [[ -n $SSH_CONNECTION ]]; then
@@ -35,19 +35,21 @@ TIMEFMT='%J   %U  user %S system %P cpu %*E total'$'\n'\
 export NVM_LAZY_LOAD=true
 
 ### Added by Zplugin's installer
-source '/home/feretj/.zplugin/bin/zplugin.zsh'
+source '/Users/sgorbachev/.zplugin/bin/zplugin.zsh'
 autoload -Uz _zplugin
 (( ${+_comps} )) && _comps[zplugin]=_zplugin
 ### End of Zplugin's installer chunk
 
-zplugin ice svn multisrc"{theme-and-appearance,clipboard,completion,directories,history,key-bindings,grep}.zsh" pick"";
+zplugin ice svn multisrc"{theme-and-appearance,clipboard,completion,directories,history,key-bindings,grep,git}.zsh" pick"";
 zplugin snippet OMZ::lib
 zplugin snippet OMZ::plugins/git/git.plugin.zsh
 zplugin snippet OMZ::plugins/git-flow/git-flow.plugin.zsh
 zplugin snippet OMZ::plugins/colored-man-pages/colored-man-pages.plugin.zsh
 zplugin snippet OMZ::plugins/extract/extract.plugin.zsh
 zplugin snippet OMZ::plugins/sudo/sudo.plugin.zsh
-zplugin snippet OMZ::plugins/aws/aws.plugin.zsh
+zplugin ice as"completion"
+zplugin snippet OMZ::plugins/docker/_docker
+zplugin snippet OMZ::plugins/docker-compose/docker-compose.plugin.zsh
 zplugin ice as"completion"
 zplugin light zsh-users/zsh-completions
 zplugin light djui/alias-tips
@@ -57,6 +59,8 @@ zplugin light lukechilds/zsh-nvm
 autoload -Uz compinit 
 compinit
 
+# zplugin ice silent wait'0'
+# zplugin snippet OMZ::plugins/aws/aws.plugin.zsh
 zplugin light bhilburn/powerlevel9k
 zplugin ice silent wait'0'
 zplugin light zdharma/history-search-multi-word
@@ -103,11 +107,10 @@ zstyle ':completion:*:sudo:*' command-path /usr/local/sbin \
                                             /usr/X11R6/bin
 
 
-export GPG_TTY=$(tty)
-gpg-connect-agent updatestartuptty /bye >/dev/null
-
-export ANDROID_HOME=$HOME/Android/Sdk
+export ANDROID_HOME=$HOME/Library/Android/sdk
 export PATH=$PATH:$ANDROID_HOME/emulator
 export PATH=$PATH:$ANDROID_HOME/tools
 export PATH=$PATH:$ANDROID_HOME/tools/bin
 export PATH=$PATH:$ANDROID_HOME/platform-tools
+
+alias empx2="emulator -avd Pixel_2_API_28 &"
